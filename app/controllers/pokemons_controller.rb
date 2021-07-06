@@ -20,7 +20,7 @@ class PokemonsController < ApplicationController
       @pokemon = Pokemon.create!(pokemon_params)
       render json: @pokemon, status: :ok
     rescue ActiveRecord::RecordInvalid => e
-      render json: e.message, status: :unprocessable_entity
+      render json: { error: e.message }, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class PokemonsController < ApplicationController
       @pokemon.update!(pokemon_params)
       render json: @pokemon, status: :ok
     rescue ActiveRecord::RecordInvalid => e
-      render json: e.message, status: :unprocessable_entity
+      render json: { error: e.message }, status: :unprocessable_entity
     end
   end
 
@@ -49,7 +49,7 @@ class PokemonsController < ApplicationController
     begin
       @pokemon = Pokemon.find(params[:id])
     rescue ActiveRecord::RecordNotFound => e
-      render json: e.message, status: :not_found
+      render json: { error: e.message }, status: :not_found
     end
   end
 end
