@@ -3,4 +3,289 @@ openapi: 3.0.1
 info:
   title: Pokemons API V1
   version: v1
-paths: {}
+paths:
+  "/pokemons":
+    get:
+      summary: paginated pokemons list
+      parameters:
+      - name: page
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: pokemonsPerPage
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: string
+                  pokemons:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: integer
+                        number:
+                          type: integer
+                        name:
+                          type: string
+                        type_1:
+                          type: string
+                        type_2:
+                          type: string
+                        total:
+                          type: integer
+                        hp:
+                          type: integer
+                        attack:
+                          type: integer
+                        defense:
+                          type: integer
+                        sp_atk:
+                          type: integer
+                        sp_def:
+                          type: integer
+                        speed:
+                          type: integer
+                        generation:
+                          type: integer
+                        legendary:
+                          type: boolean
+    post:
+      summary: create pokemon
+      parameters: []
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: string
+                  pokemons:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: integer
+                        number:
+                          type: integer
+                        name:
+                          type: string
+                        type_1:
+                          type: string
+                        type_2:
+                          type: string
+                        total:
+                          type: integer
+                        hp:
+                          type: integer
+                        attack:
+                          type: integer
+                        defense:
+                          type: integer
+                        sp_atk:
+                          type: integer
+                        sp_def:
+                          type: integer
+                        speed:
+                          type: integer
+                        generation:
+                          type: integer
+                        legendary:
+                          type: boolean
+        '422':
+          description: unprocessable entity
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                number:
+                  type: integer
+                name:
+                  type: string
+                type_1:
+                  type: string
+                type_2:
+                  type: string
+                total:
+                  type: integer
+                hp:
+                  type: integer
+                attack:
+                  type: integer
+                defense:
+                  type: integer
+                sp_atk:
+                  type: integer
+                sp_def:
+                  type: integer
+                speed:
+                  type: integer
+                generation:
+                  type: integer
+                legendary:
+                  type: boolean
+  "/pokemons/{id}":
+    get:
+      summary: show pokemon
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: string
+                  pokemons:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: integer
+                        number:
+                          type: integer
+                        name:
+                          type: string
+                        type_1:
+                          type: string
+                        type_2:
+                          type: string
+                        total:
+                          type: integer
+                        hp:
+                          type: integer
+                        attack:
+                          type: integer
+                        defense:
+                          type: integer
+                        sp_atk:
+                          type: integer
+                        sp_def:
+                          type: integer
+                        speed:
+                          type: integer
+                        generation:
+                          type: integer
+                        legendary:
+                          type: boolean
+        '404':
+          description: not found
+    patch:
+      summary: update pokemon
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page:
+                    type: string
+                  pokemons:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: integer
+                        number:
+                          type: integer
+                        name:
+                          type: string
+                        type_1:
+                          type: string
+                        type_2:
+                          type: string
+                        total:
+                          type: integer
+                        hp:
+                          type: integer
+                        attack:
+                          type: integer
+                        defense:
+                          type: integer
+                        sp_atk:
+                          type: integer
+                        sp_def:
+                          type: integer
+                        speed:
+                          type: integer
+                        generation:
+                          type: integer
+                        legendary:
+                          type: boolean
+        '404':
+          description: not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                number:
+                  type: integer
+                name:
+                  type: string
+                type_1:
+                  type: string
+                type_2:
+                  type: string
+                total:
+                  type: integer
+                hp:
+                  type: integer
+                attack:
+                  type: integer
+                defense:
+                  type: integer
+                sp_atk:
+                  type: integer
+                sp_def:
+                  type: integer
+                speed:
+                  type: integer
+                generation:
+                  type: integer
+                legendary:
+                  type: boolean
+    delete:
+      summary: delete pokemon
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+        '404':
+          description: not found
